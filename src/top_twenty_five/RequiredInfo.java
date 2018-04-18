@@ -52,7 +52,7 @@ public class RequiredInfo {
 	}
 	
 	/**
-	 * Get hostName and port from user and overwrite defaults
+	 * Get hostName and port from user
 	 * 
 	 * @param scan The scanner object used to collect their responses
 	 */
