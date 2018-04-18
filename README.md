@@ -12,7 +12,7 @@ If you meet all of the prerequisites and are connected to the internet, clone or
 
 * For this program to run you will need to have [mySQL](https://dev.mysql.com/downloads/windows/installer/5.7.html) installed and a local instance that you can access. You will need to know its hostname and port number if they are not the defaults (localhost and 3306, respectively).
 
-* You will also need to be able to [compile java projects into executable jar files](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen3a) if you want to make any changes to the source code.
+* You will need to be able to [compile java projects into executable jar files](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen3a) if you want to make any changes to the source code.
 
 * You will need to be connected to the internet when you run this program. If you're not, it will not be able to get text from any websites.
 
