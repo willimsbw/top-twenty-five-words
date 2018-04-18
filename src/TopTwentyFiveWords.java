@@ -101,8 +101,8 @@ public class TopTwentyFiveWords {
 		} catch(SQLException ex) {
 			if (ex.getErrorCode() == 1045) { // if there's a problem with users' credentials
 				Boolean retry = tryAgain(scan, "It looks like there was a problem with your mySQL "
-												+ "credentials. Would you like try again? ('yes' "
-												+ "or 'no')");
+												+ "credentials. Would you like try re-entering them"
+												+ "? ('yes' or 'no')");
 				if (retry) {
 					obj.getMySql(scan);
 					return connectTo(obj, scan, dbUrlSuffix);
