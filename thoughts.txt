@@ -2,7 +2,7 @@
 
                                 Initial Assumptions and Ideas
 
-When I initially read the parameters my mind immediately jumped to how I would solve this if it were
+When I initially read the parameters, my mind immediately jumped to how I would solve this if it were
 a Javascript or Python problem. Steps along the lines of:
 
   1. Get string of text on the website (Jsoup.get().text() - very helpful by the way, thank you)
@@ -12,44 +12,48 @@ a Javascript or Python problem. Steps along the lines of:
   3. Iterate over array of words. If a word hasn't been encountered, add it to a HashList-equivalent
      data structure (like a Dictionary in Python) with key: <the word> and value: <count> ("1" when
      adding a new word). If the word was already in the data structure, add one to the existing
-     key's count.
+     key's count
 
   4. Get a list of tuples containing the key:value pairs, sorted descending by that count value
 
-  5. Print the first 25 items on the list.
+  5. Print the first 25 items on the list
 
 But as I sketched this out I realized I wasn't sure how arrays worked in Java, or if there was an
 equivalent data structure to Dictionaries, or anything like that. Additionally, you had told me to
-utilize a mySQL database, which throws a whole wrench into the outline above - not to mention I didn't
-even have mySQL installed.
+utilize a mySQL database, which throws a whole wrench into the outline above - not to mention I'd
+never worked with mySQL or modified or accessed a SQL database via code with no GUI.
 
 So I spent ~3 hours doing the intro Java course on Codecademy and reading documentation to refresh
 my Java base-knowledge, and I came up with the following broad-strokes version that included a mySQL
 database:
 
   1. Set up a mySQL database with two tables. One to store url's and their content: "websites", and
-     a child table to store each word, the url it came from, and the number of times it occurred: "words"
+     a child table to store each word, the url it came from, and the number of times it occurred:
+     "words"
         1a.) I decided to use a mashup of the word prepended to the url as the "words" Primary key
              and the url for the "websites" primary key, as well as the "words" foreign key
 
   2. Get url from the user and use that to download text
 
-  3. Store url and its text in "websites", and track creation date so it can be re-downloaded if
-     it was initially downloaded too long ago
+  3. Store url and its text in "websites", and track creation date so we can decide whether to
+     overwrite or use existing data if the url is already in the database based on how long it has
+     been since its text was downloaded
 
   4. Break text into array of words
 
-  5. Push each word into "words" table, and once a word is added increase "words" record's count by 1
-     every other time it's encountered
+  5. Push each word into "words" table, and once a word is added, increase "words" record's count by
+     1 each other time it's encountered
 
   6. Lookup the 25 words with the right url and the highest count, and print them out one at a time
 
 So all-in-all, not so different, but I had a ton of practical questions:
 
   * how to actually push and pull data with the mySQL database
-  * whether or not I should try to host one database on the web that got used any time this program ran
+  * whether or not I should try to host one database on the web that got used any time this program
+    ran
         * And if not, how can I be sure the database exists on the computer running the program?
-            * Additionally, how does one safely handle things like login credentials if those are needed?
+            * Additionally, how does one safely handle things like login credentials if those are
+              needed?
   * how many classes I would need to create
   * little things like style and writing JavaDoc and whether to make methods public or private
 
@@ -92,15 +96,21 @@ confident finding useful Java documentation, as the stuff Oracle provides is muc
 than what I'm used to with Python or Mozilla's Es6 documentation.
 
 I do think I could have gotten it done in closer to 10 without utilizing mySQL and just printing out
-directly the top 25 words (much of the time spent was familiarizing myself with mySQL and
-troubleshooting the best way to get connected to and editing the database while handling errors that
-can come up when doing so like credential problems, non-default hostnames or ports for the instance,
-attempting to add a url that already exists in the table, etc.).
+the top 25 words without storing them. Much of the time spent was familiarizing myself with mySQL and
+troubleshooting the best way to get connected to and edit the database while handling errors that
+can come up when doing so like:
+  * credential problems
+  * non-default hostnames or ports for the instance
+  * attempting to add a url that already exists in the table
+Just to name a few.
 
 I'm glad you encouraged me to learn the mySQL stuff though, because it makes this program so much
-more flexible. It could be broken out into two programs - one that stores the data and another that
+more useful. It could be broken out into two programs - one that stores the data and another that
 simply queries the database for the top 25. You could change how duplicate url's are handled and
 store the same webpage every day for a week to see how it changes. Because the data is being stored
 somewhere, you can get the desired result (the top 25 words), but you can also do any number of other
 things with it. Not to mention, I feel like understanding how to work with a SQL database with Java
 is a good skill to have.
+
+I just wanted to say thank you again for taking the time to meet with me and give me feedback. I
+really enjoyed meeting you and working on this project, and I hope I can stay in touch!
