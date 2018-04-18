@@ -1,3 +1,5 @@
+package top_twenty_five;
+
 import java.io.Console;
 import java.util.Scanner;
 
