@@ -120,6 +120,13 @@ public class TopTwentyFiveWords {
 					obj.getDbUrlInfo(scan);
 					return connectTo(obj, scan, dbUrlSuffix);
 				}
+			} else if (ex.getErrorCode() == 1044) {
+				Boolean retry = tryAgain(scan, "Access was denied for that username. Would you "
+												+ "like try a different one? ('yes' or 'no')");
+				if(retry) {
+					obj.getMySql(scan);
+					return connectTo(obj, scan, dbUrlSuffix);
+				}
 			} else {
 				System.out.println("Error connecting to mySQL: " + ex.getMessage());
 				System.out.println("Error code was: " + ex.getErrorCode());
