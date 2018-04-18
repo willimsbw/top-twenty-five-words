@@ -1,0 +1,106 @@
+                            Thoughts on coding exercise for Paul:
+
+                                Initial Assumptions and Ideas
+
+When I initially read the parameters my mind immediately jumped to how I would solve this if it were
+a Javascript or Python problem. Steps along the lines of:
+
+  1. Get string of text on the website (Jsoup.get().text() - very helpful by the way, thank you)
+
+  2. Split() the text string into individual words
+
+  3. Iterate over array of words. If a word hasn't been encountered, add it to a HashList-equivalent
+     data structure (like a Dictionary in Python) with key: <the word> and value: <count> ("1" when
+     adding a new word). If the word was already in the data structure, add one to the existing
+     key's count.
+
+  4. Get a list of tuples containing the key:value pairs, sorted descending by that count value
+
+  5. Print the first 25 items on the list.
+
+But as I sketched this out I realized I wasn't sure how arrays worked in Java, or if there was an
+equivalent data structure to Dictionaries, or anything like that. Additionally, you had told me to
+utilize a mySQL database, which throws a whole wrench into the outline above - not to mention I didn't
+even have mySQL installed.
+
+So I spent ~3 hours doing the intro Java course on Codecademy and reading documentation to refresh
+my Java base-knowledge, and I came up with the following broad-strokes version that included a mySQL
+database:
+
+  1. Set up a mySQL database with two tables. One to store url's and their content: "websites", and
+     a child table to store each word, the url it came from, and the number of times it occurred: "words"
+        1a.) I decided to use a mashup of the word prepended to the url as the "words" Primary key
+             and the url for the "websites" primary key, as well as the "words" foreign key
+
+  2. Get url from the user and use that to download text
+
+  3. Store url and its text in "websites", and track creation date so it can be re-downloaded if
+     it was initially downloaded too long ago
+
+  4. Break text into array of words
+
+  5. Push each word into "words" table, and once a word is added increase "words" record's count by 1
+     every other time it's encountered
+
+  6. Lookup the 25 words with the right url and the highest count, and print them out one at a time
+
+So all-in-all, not so different, but I had a ton of practical questions:
+
+  * how to actually push and pull data with the mySQL database
+  * whether or not I should try to host one database on the web that got used any time this program ran
+        * And if not, how can I be sure the database exists on the computer running the program?
+            * Additionally, how does one safely handle things like login credentials if those are needed?
+  * how many classes I would need to create
+  * little things like style and writing JavaDoc and whether to make methods public or private
+
+Eventually I decided it would be best to build something that can be run on a computer with mySQL
+installed and create the database locally, then if I had time (I didn't), try spinning up an AWS RDS
+database and using that from anywhere the program is run.
+
+In total, I spent a little over 5 hours doing research and prep work on Java, AWS RDS, styling, mySQL,
+and thinking through the structure and steps of the program before writing a single line of code.
+
+
+                                      Writing the Program
+
+I assumed there would be plenty of challenges I'd run into, and I was right. Including answering all
+of the practical questions I listed above, I was able to overcome the following gaps in my knowledge:
+
+  * How to install mySQL and use it via the cmd line generally
+  * Connecting to mySQL databases with JDBC and using connection objects to execute SQL code from Java
+  * How to write SQL code to do what I wanted to do in the database
+  * How to do a ton of error handling so that users could try to do things like enter their credentials
+    more than once in case of typos, as just one example
+  * How to handle the use of scanner objects in multiple methods, since closing it in one can cause
+    a newly initialized scanner to not be able to take in inputs in a later method
+  * How to utilize Console objects to receive inputs with echo turned off in char[] format rather than
+    string as a more secure way to utilize sensitive inputs like passwords
+
+ I was able to write a hacky, not-very-object-oriented version of the program that met the technical
+ requirement of printing out the top 25 words from a url that utilized a mySQL database in about 3 hours.
+ I spent another 9 hours breaking that into methods and classes and making sure it could handle errors
+ in connecting to mySQL, creating the needed database and tables, etc. Once that was done, I spent my
+ last 2 or so hours cleaning up the documentation, writing the readme, zipping up the source code repo
+ with the readme and a jar file, and all the necessary last little detail work.
+
+
+                                         Final Takeaways
+
+In total, I spent right around 20 hours on this project over the past 5 days, and I feel like I've
+learned a LOT about java and about working with databases indirectly via code. I also feel much more
+confident finding useful Java documentation, as the stuff Oracle provides is much less straightforward
+than what I'm used to with Python or Mozilla's Es6 documentation.
+
+I do think I could have gotten it done in closer to 10 without utilizing mySQL and just printing out
+directly the top 25 words (much of the time spent was familiarizing myself with mySQL and
+troubleshooting the best way to get connected to and editing the database while handling errors that
+can come up when doing so like credential problems, non-default hostnames or ports for the instance,
+attempting to add a url that already exists in the table, etc.).
+
+I'm glad you encouraged me to learn the mySQL stuff though, because it makes this program so much
+more flexible. It could be broken out into two programs - one that stores the data and another that
+simply queries the database for the top 25. You could change how duplicate url's are handled and
+store the same webpage every day for a week to see how it changes. Because the data is being stored
+somewhere, you can get the desired result (the top 25 words), but you can also do any number of other
+things with it. Not to mention, I feel like understanding how to work with a SQL database with Java
+is a good skill to have.
