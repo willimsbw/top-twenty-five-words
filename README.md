@@ -16,6 +16,12 @@ If you meet all of the prerequisites and are connected to the internet, clone or
 
 * You will need to be connected to the internet when you run this program. If you're not, it will not be able to get text from any websites.
 
+## Tests
+
+There are no automated tests at this time for this program, but feel free to try to break it with weird or incorrect inputs. I have included in the "tests" folder age-a-record.sql. This is a simple sql command that will need to be edited so it uses the database name you've picked out and the url you've looked up already.
+
+Once edited, it will back-date the create_date timestamp of a "website" record in your database with the url you provided to 2018-04-15 19:27:42, making it appear more than two days old. This will allow you to test how the program handles being fed a url that you have looked up more than two days ago without having to wait.
+
 ## Built With
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
