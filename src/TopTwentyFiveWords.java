@@ -35,6 +35,7 @@ public class TopTwentyFiveWords {
 		Scanner userInput = new Scanner(System.in);
 		RequiredInfo userInfo = new RequiredInfo();
 		userInfo.getMySql(userInput);
+		userInfo.getDbUrlInfo(userInput);
 		Connection userDb = connectTo(userInfo, userInput, "useSSL=false");
 		userInfo.password = null;
 		if(userDb != null) {	
@@ -109,9 +110,9 @@ public class TopTwentyFiveWords {
 					System.out.println("You've opted not to try again. No mySQL connection made.");
 					return null;
 				}
-			} else if (ex.getErrorCode() == 1049) { // if default mySQL url fails
+			} else if (ex.getErrorCode() == 0) { // if default mySQL url fails
 				Boolean retry = tryAgain(scan, "Unable to connect to your mySQL instance using "
-												+ "URL: " + mySql + ". Would you like to correct"
+												+ "URL: " + mySql + ". Would you like to correct "
 												+ "this and try again? ('yes' or 'no')");
 				if(retry) {
 					obj.getDbUrlInfo(scan);
@@ -214,7 +215,7 @@ public class TopTwentyFiveWords {
 			return true;
 		} catch (SQLException ex) {
 			if (ex.getErrorCode() == 1062) {				
-				System.out.println("Looks like you looked up that url once before.");
+				System.out.println("It appears you've looked this url up before...");
 				String getDateCreated = "SELECT create_date FROM websites WHERE url='" + url + "';";
 				ResultSet createDateLookup;
 				try {

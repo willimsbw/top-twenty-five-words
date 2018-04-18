@@ -13,8 +13,8 @@ public class RequiredInfo {
 	char[] password;
 	String url;
 	String databaseName;
-	String hostName = "localhost";
-	String port = "3306";
+	String hostName;
+	String port;
 	
 	public RequiredInfo() {
 		
@@ -55,9 +55,9 @@ public class RequiredInfo {
 	 * @param scan The scanner object used to collect their responses
 	 */
 	public void getDbUrlInfo(Scanner scan) {
-		System.out.println("\nWhat is your mySQL hostname? (Default is localhost)");
+		System.out.println("\nWhat is your mySQL hostname? (if you're not sure, it's probably 'localhost')");
 		this.hostName = scan.next();
-		System.out.println("What is your mySQL Port? (Default is 3306");
+		System.out.println("What is your mySQL Port? (if you're not sure, it's probably '3306')");
 		this.port = scan.next();
 	}
 	
