@@ -1,6 +1,6 @@
 # Top 25 Words
 
-Downloading this source code and converting to an executable .jar file will allow you to run the program TopTwentyFiveWords. This program will create (or connect to) a database in a local mySQL instance with tables "websites" and "words", and utilize those tables to store all of the text from a url you specify, along with each individual word from that text and the number of times it occurs. It will then tell you the 25 most frequently-used words from that url, and the number of times they appeared. You can use this program repeatedly to build out a database of what text is on what url, even overwriting old data for pages that were looked up more than 2 days ago.
+Downloading this source code and converting to an executable .jar file or just downloading the jar included in this repo will allow you to run the program TopTwentyFiveWords. This program will create (or connect to) a database in a local mySQL instance with tables "websites" and "words", and utilize those tables to store all of the text from a url you specify, along with each individual word from that text and the number of times it occurs. It will then tell you the 25 most frequently-used words from that url, and the number of times they appeared. You can use this program repeatedly to build out a database of what text is on what url, even overwriting old data for pages that were looked up more than 2 days ago.
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ If you meet all of the prerequisites and are connected to the internet, clone or
 
 * For this program to run you will need to have [mySQL](https://dev.mysql.com/downloads/windows/installer/5.7.html) installed and a local instance that you can access. You will need to know its hostname and port number if they are not the defaults (localhost and 3306, respectively).
 
-* You will also need to be able to [compile java projects into executable jar files](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen3a).
+* You will also need to be able to [compile java projects into executable jar files](https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen3a) if you want to make any changes to the source code.
 
 * You will need to be connected to the internet when you run this program. If you're not, it will not be able to get text from any websites.
 
