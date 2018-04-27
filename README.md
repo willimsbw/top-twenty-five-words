@@ -1,6 +1,6 @@
 # Top 25 Words
 
-Downloading this source code and converting to an executable .jar file or just downloading the jar included in this repo will allow you to run the program TopTwentyFiveWords. This program will create (or connect to) a database in a local mySQL instance with tables "websites" and "words", and utilize those tables to store all of the text from a url you specify, along with each individual word from that text and the number of times it occurs. It will then tell you the 25 most frequently-used words from that url, and the number of times they appeared. You can use this program repeatedly to build out a database of what text is on what url, even overwriting old data for pages that were looked up more than 2 days ago.
+Downloading this source code and converting to an executable .jar file will allow you to run the program TopTwentyFiveWords. This program will create (or connect to) a database in a local mySQL instance with tables "websites" and "words", and utilize those tables to store all of the text from a url you specify, along with each individual word from that text and the number of times it occurs. It will then tell you the 25 most frequently-used words from that url, and the number of times they appeared. You can use this program repeatedly to build out a database of what text is on what url, even overwriting old data for pages that were looked up more than 2 days ago.
 
 ## Getting Started
 
@@ -41,5 +41,4 @@ who participated in this project.
 
 ## Acknowledgments
 
-* Thanks to Paul Bock for being generally great and sending me this challenge
 * [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2), for providing this really great readme template
