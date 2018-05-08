@@ -2,6 +2,8 @@
 
 Downloading this source code and converting to an executable .jar file will allow you to run the program TopTwentyFiveWords. This program will create (or connect to) a database in a local mySQL instance with tables "websites" and "words", and utilize those tables to store all of the text from a url you specify, along with each individual word from that text and the number of times it occurs. It will then tell you the 25 most frequently-used words from that url, and the number of times they appeared. You can use this program repeatedly to build out a database of what text is on what url, even overwriting old data for pages that were looked up more than 2 days ago.
 
+This was written as part of a time-sensitive challenge and I have not yet gone back through to break it up into more classes, etc.
+
 ## Getting Started
 
 If you meet all of the prerequisites and are connected to the internet, clone or download this repo and convert it to an executable jar file. Then run that jar file from the command line.
